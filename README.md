@@ -143,44 +143,7 @@ class Example extends StatelessWidget {
 }
 ```
 
-
-## Stateful
-
-```
-class Example extends StatefulWidget {
-  const Example({super.key});
-
-  @override
-  State<Example> createState() => _ExampleState();
-}
-
-class _ExampleState extends State<Example> {
-  var value = 1;
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Início"),
-      ),
-      body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            IconButton(
-                onPressed: () => setState(() { value++; }),
-                icon: const Icon(Icons.add)),
-            Text(
-              value.toString(),
-              style: const TextStyle(fontSize: 25.0),
-            ),
-            IconButton(
-                onPressed: () => setState(() { value--; }),
-                icon: const Icon(Icons.remove)),
-          ],
-        ),),);}}
-```
-
-## Images
+## Images e SizedBox
 
 ```
 # To add assets to your application, add an assets section, like this:
@@ -520,4 +483,116 @@ class Example extends StatelessWidget {
 }
 ```
 
+## GestureDetector e SnackBar
+
+```
+
+class Example extends StatelessWidget {
+  const Example({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text("Inicío"),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(5),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                GestureDetector(
+                    onTap: () {
+                      var snackBar = const SnackBar(
+                        content: Text('Clicou!'),
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    },
+                    child: const Text(
+                      'Clique em mim!',
+                      style: TextStyle(fontSize: 30.0),
+                    ))
+              ],
+            ),
+          ),
+        ));
+  }
+}
+```
+
+## ListView
+
+```
+class Example extends StatelessWidget {
+  const Example({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text("Inicío"),
+        ),
+        body: ListView(
+          padding: const EdgeInsets.all(8),
+          children: const [
+            ListTile(
+              title: Text('Dart'),
+              trailing: Icon(Icons.check),
+            ),
+            Divider(thickness: 2,),
+            ListTile(
+              title: Text('Java'),
+              trailing: Icon(Icons.check_box_outline_blank),
+            ),
+            Divider(thickness: 2,),
+            ListTile(
+              title: Text('Kotlin'),
+              trailing: Icon(Icons.check_box_outline_blank),
+            ),
+            Divider(thickness: 2,),
+            ListTile(
+              title: Text('Python'),
+              trailing: Icon(Icons.check),
+            ),
+          ],
+        ));
+  }
+}
+```
+
+
+## Stateful
+
+```
+class Example extends StatefulWidget {
+  const Example({super.key});
+
+  @override
+  State<Example> createState() => _ExampleState();
+}
+
+class _ExampleState extends State<Example> {
+  var value = 1;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Início"),
+      ),
+      body: Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            IconButton(
+                onPressed: () => setState(() { value++; }),
+                icon: const Icon(Icons.add)),
+            Text(
+              value.toString(),
+              style: const TextStyle(fontSize: 25.0),
+            ),
+            IconButton(
+                onPressed: () => setState(() { value--; }),
+                icon: const Icon(Icons.remove)),
+          ],
+        ),),);}}
+```
 
