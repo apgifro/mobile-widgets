@@ -1,5 +1,7 @@
 # Flutter: um guia para sair do zero
 
+Listagens.
+
 ## Explicação inicial
 
 ```
@@ -42,19 +44,103 @@ class Example extends StatelessWidget {
 ## Row
 
 ```
-
+class Example extends StatelessWidget {
+  const Example({super.key});
+  @override
+  Widget build(BuildContext context) {
+    var urlToImage = 'https://github.com/alexgirardello.png';
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Inicío"),
+      ),
+      body: Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            CircleAvatar(
+              backgroundImage: NetworkImage(urlToImage),
+            ),
+            const Text(
+              "Bem-vindo",
+              style: TextStyle(fontSize: 30.0),
+            ),
+            const Text(
+              "23ºC",
+              style: TextStyle(fontSize: 30.0),
+            )
+          ],
+        ),
+      )
+    );
+  }
+}
 ```
 
 ## Column
 
 ```
-
+class Example extends StatelessWidget {
+  const Example({super.key});
+  @override
+  Widget build(BuildContext context) {
+    var urlToImage = 'https://github.com/alexgirardello.png';
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Inicío"),
+      ),
+      body: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CircleAvatar(
+              backgroundImage: NetworkImage(urlToImage),
+            ),
+            const Text(
+              "Bem-vindo",
+              style: TextStyle(fontSize: 30.0),
+            ),
+            const Text(
+              "23ºC",
+              style: TextStyle(fontSize: 30.0),
+            )
+          ],
+        ),
+      )
+    );
+  }
+}
 ```
 
 ## Padding
 
 ```
-
+class Example extends StatelessWidget {
+  const Example({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Inicío"),
+      ),
+      body: const Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.fromLTRB(60, 30, 0, 0),
+            child: Text(
+              "Algum texto.",
+              style: TextStyle(fontSize: 30.0),
+            ),
+          ),
+          Text(
+            "Mais texto.",
+            style: TextStyle(fontSize: 30.0),
+          ),
+        ],
+      )
+    );
+  }
+}
 ```
 
 
