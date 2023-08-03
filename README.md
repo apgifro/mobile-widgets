@@ -559,6 +559,48 @@ class Example extends StatelessWidget {
 }
 ```
 
+## ListView.builder
+
+```
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(DevicePreview(
+      enabled: true,
+      builder: (BuildContext context) => MaterialApp(
+            debugShowCheckedModeBanner: false,
+            useInheritedMediaQuery: true,
+            home: Example(
+              items: List<String>.generate(100, (i) => 'Item $i'),
+            ),
+          )));
+}
+
+class Example extends StatelessWidget {
+  final List<String> items;
+
+  const Example({super.key, required this.items});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text('Início'),
+        ),
+        body: ListView.builder(
+          itemCount: items.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              title: Text(items[index]),
+            );
+          },
+      ),
+    );
+  }
+}
+```
+
 
 ## Stateful
 
